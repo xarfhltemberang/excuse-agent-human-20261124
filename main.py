@@ -15,6 +15,8 @@ ENTRY = (
 
 
 def main() -> None:
+    if not 1 <= len(ENTRY) <= 160 or "\n" in ENTRY:
+        raise ValueError("entry must be a single line of 1-160 characters")
     output = Path("/output/entry.txt")
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(ENTRY, encoding="utf-8")
